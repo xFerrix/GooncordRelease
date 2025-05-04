@@ -757,7 +757,7 @@ fn main() -> WVResult {
                 }
                 Ok(WebMessage::BanStatus) => {
                     if state.logged_in && !state.is_banned {
-                        if state.last_ban_check.elapsed() >= Duration::from_secs(1) {
+                        if state.last_ban_check.elapsed() >= Duration::from_secs(5) {
                             state.last_ban_check = Instant::now();
                             if let Ok(true) = state.check_random_ban() {
                                 if let (Some(reason), Some(expires)) =
